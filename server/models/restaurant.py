@@ -9,7 +9,8 @@ class Restaurant(db.Model):
     address = db.Column(db.String, nullable=False)
 
     # Relationships:
-    # cascade="all, delete-orphan" ensures that when a Restaurant is deleted,
+    # cascade="all, delete-orphan" ensures that when a Restaurant is deleted all associated RestaurantPizza entries are also deleted.
+    # This is important for maintaining referential integrity in the database.
     restaurant_pizzas = db.relationship('RestaurantPizza', backref='restaurant', cascade="all, delete-orphan", lazy=True)
     pizzas = association_proxy('restaurant_pizzas', 'pizza')
 
