@@ -59,6 +59,5 @@ def delete_restaurant(id):
         return make_response('', 204)
     except Exception as e:
         db.session.rollback() # Rollback changes if an error occurs
-        # In a real application, you might log the error 'str(e)'
         return jsonify({"error": "An error occurred during deletion"}), 500
 
