@@ -1,7 +1,7 @@
 # Pizza Restaurant API
 This project implements a RESTful API for a Pizza Restaurant using Flask, following the MVC (Model-View-Controller) architectural pattern. It allows managing restaurants, pizzas, and their associations.
 
-## Project Structure
+# Project Structure
 .
 ├── server/
 │   ├── __init__.py         # Package initialization
@@ -23,15 +23,15 @@ This project implements a RESTful API for a Pizza Restaurant using Flask, follow
 └── README.md               # This README file
 
 
-## Setup Instructions
+# Setup Instructions
 Follow these steps to set up and run the API locally:
 
 1. Create a Virtual Environment and Install Dependencies
 Navigate to the root directory of the project in your terminal.
 
-# Create a pipenv virtual environment and install packages
+## Create a pipenv virtual environment and install packages
 pipenv install flask flask_sqlalchemy flask_migrate flask_cors
-# Activate the virtual environment
+## Activate the virtual environment
 pipenv shell
 
 
@@ -44,11 +44,11 @@ export FLASK_APP=server/app.py
 
 Initialize, migrate, and upgrade your database. This creates the database file (pizza_restaurant.db) and sets up the tables based on your models.
 
-# Initialize Flask-Migrate for the project
+## Initialize Flask-Migrate for the project
 flask db init
-# Create a migration script based on your models
+## Create a migration script based on your models
 flask db migrate -m "Initial migration"
-# Apply the migrations to your database
+## Apply the migrations to your database
 flask db upgrade
 
 3. Seed the Database
@@ -61,22 +61,22 @@ flask run
 
 The API should now be running on http://127.0.0.1:5000/ (or http://localhost:5000/).
 
-## Models
+# Models
 The application uses the following SQLAlchemy models:
 
-# Restaurant
+## Restaurant
 id: Primary Key
 name: String, not nullable
 address: String, not nullable
 Relationships: Has many RestaurantPizzas. Cascading deletes are configured so that deleting a Restaurant also deletes all associated RestaurantPizza entries.
 
-# Pizza
+## Pizza
 id: Primary Key
 name: String, not nullable
 ingredients: String, not nullable
 Relationships: Has many RestaurantPizzas.
 
-# RestaurantPizza (Join Table)
+## RestaurantPizza (Join Table)
 id: Primary Key
 price: Integer, not nullable.
 Validation: Must be between 1 and 30 (inclusive).
@@ -84,7 +84,7 @@ restaurant_id: Foreign Key referencing restaurants.id
 pizza_id: Foreign Key referencing pizzas.id
 Relationships: Belongs to Restaurant and Pizza.
 
-## Required Routes
+# Required Routes
 All routes return JSON responses. Errors are returned with appropriate HTTP status codes and a JSON error object.
 
 1. GET /restaurants
